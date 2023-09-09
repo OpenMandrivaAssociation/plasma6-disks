@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230901
+%define git 20230909
 
 Summary:	Hard disk health monitoring for KDE Plasma
 Name:		plasma6-disks
@@ -57,7 +57,7 @@ signs of imminent failure appear.
 
 %files -f %{name}.lang
 %license LICENSES/*.txt
-%{_libdir}/libexec/kauth/kded-smart-helper
+%{_libdir}/libexec/kf6/kauth/kded-smart-helper
 %{_datadir}/dbus-1/system-services/org.kde.kded.smart.service
 %{_datadir}/dbus-1/system.d/org.kde.kded.smart.conf
 %{_datadir}/metainfo/org.kde.plasma.disks.metainfo.xml
