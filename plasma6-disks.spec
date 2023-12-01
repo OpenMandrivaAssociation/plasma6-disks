@@ -31,8 +31,6 @@ BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Test)
 BuildRequires:	smartmontools
-# Avoid pulling in Plasma 5
-BuildRequires:	plasma6-xdg-desktop-portal-kde
 Requires:	smartmontools
 
 %description
