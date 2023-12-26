@@ -31,6 +31,7 @@ BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Test)
 BuildRequires:	smartmontools
+BuildRequires:	gettext
 Requires:	smartmontools
 
 %description
