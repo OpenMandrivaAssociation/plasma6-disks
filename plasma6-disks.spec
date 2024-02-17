@@ -1,6 +1,8 @@
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Summary:	Hard disk health monitoring for KDE Plasma
 Name:		plasma6-disks
@@ -10,7 +12,7 @@ License:	GPL
 Group:		Graphical desktop/KDE
 URL:		https://kde.org
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/plasma/plasma-disks/-/archive/master/plasma-disks-master.tar.bz2#/plasma-disks-%{git}.tar.bz2
+Source0:	https://invent.kde.org/plasma/plasma-disks/-/archive/%{gitbranch}/plasma-disks-%{gitbranchd}.tar.bz2#/plasma-disks-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-disks-%{version}.tar.xz
 %endif
@@ -39,7 +41,7 @@ Plasma Disks monitors S.M.A.R.T. data of disks and alerts the user when
 signs of imminent failure appear.
 
 %prep
-%autosetup -n plasma-disks-%{?git:master}%{!?git:%{version}} -p1
+%autosetup -n plasma-disks-%{?git:%{gitbranchd}}%{!?git:%{version}} -p1
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
